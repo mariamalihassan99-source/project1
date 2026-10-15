@@ -1,19 +1,213 @@
-*{
-box-sizing: border-box;
-margin: 0;
-padding: 0;
+
+/* ===== General Styling ===== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-
-body{
- display: flex;
-justify-content: center ;
-align-items: center;
-padding: 30px 16px;
-font-family: Georgia, 'Times New Roman', Times, serif;
-background-color:#f9cde3 ;
-background-image:
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 16px;
+    font-family: Georgia, "Times New Roman", serif;
+    background-color: #f5ecdf;
+    background-image:
         radial-gradient(#dfc9b8 0.7px, transparent 0.7px);
-background-size: 12px 12px;  
-color: #6b4939 ;      
+    background-size: 12px 12px;
+    color: #6b4939;
+}
+
+/* ===== Main Game Container ===== */
+
+.game-container {
+    width: 100%;
+    max-width: 520px;
+    padding: 35px 28px;
+    text-align: center;
+    background: #fffaf3;
+    border: 1px solid #d8bea6;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(107, 73, 57, 0.12);
+    position: relative;
+}
+
+/* Decorative Border */
+
+.game-container::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid #e7d5c2;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+/* ===== Header ===== */
+
+.game-header {
+    margin-bottom: 28px;
+    position: relative;
+}
+
+.subtitle {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #a47a68;
+    margin-bottom: 14px;
+}
+
+h1 {
+    font-size: clamp(28px, 6vw, 38px);
+    font-weight: normal;
+    color: #9e6564;
+    margin-bottom: 12px;
+}
+
+.instructions {
+    font-size: 14px;
+    font-style: italic;
+    color: #9b7968;
+}
+
+/* ===== Game Statistics ===== */
+
+.game-stats {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.stat {
+    flex: 1;
+    padding: 12px 6px;
+    background: #f6e8dc;
+    border: 1px solid #e4cbbb;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #9b7968;
+}
+
+.stat span:last-child {
+    font-size: 20px;
+    color: #8d5d50;
+}
+
+/* ===== Memory Cards ===== */
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    position: relative;
+}
+
+.card {
+    aspect-ratio: 1;
+    border: 1px solid #cda99b;
+    border-radius: 5px;
+    background-color: #d9b7a7;
+    color: #fffaf3;
+    font-family: Georgia, serif;
+    font-size: clamp(23px, 5vw, 34px);
+    cursor: pointer;
+    box-shadow: 2px 3px 0 #ead8c8;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.card:hover:not(:disabled) {
+    transform: translateY(-3px);
+    background-color: #c99a91;
+}
+
+.card.flipped {
+    background-color: #fff5eb;
+    color: #9e6564;
+    transform: rotateY(180deg);
+}
+
+.card.matched {
+    background-color: #efe2d4;
+    border-color: #b8a184;
+    cursor: default;
+}
+
+.card:disabled {
+    opacity: 1;
+}
+
+/* Keyboard Focus */
+
+.card:focus-visible,
+.restart-button:focus-visible {
+    outline: 3px solid #9e6564;
+    outline-offset: 3px;
+}
+
+/* ===== Game Message ===== */
+
+.message {
+    min-height: 24px;
+    margin: 24px 0 18px;
+    font-size: 14px;
+    font-style: italic;
+    color: #9e6564;
+    position: relative;
+}
+
+/* ===== Restart Button ===== */
+
+.restart-button {
+    position: relative;
+    padding: 12px 24px;
+    background: #a66f6c;
+    color: #fffaf3;
+    border: 1px solid #905b58;
+    border-radius: 4px;
+    font-family: Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.restart-button:hover {
+    background: #875654;
+}
+
+/* ===== Responsive Design ===== */
+
+@media (max-width: 400px) {
+    .game-container {
+        padding: 28px 18px;
+    }
+
+    .game-board {
+        gap: 7px;
+    }
+
+    .game-stats {
+        gap: 7px;
+    }
+
+    .stat {
+        padding: 10px 4px;
+    }
+
+    .stat-label {
+        font-size: 9px;
+    }
 }
