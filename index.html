@@ -9,67 +9,64 @@
      <link rel="stylesheet" href="style.css">
      <script src="app.js" defer></script>
 </head>
-<body>
+
 
     
-    
-    <main class="game-container"></main>
+    <body>
 
-     <header class="game-header">
-<p class="subtitle">
-    A LITTLE GAME TO BRIGHTEN YOUR DAY
-</p>
+    <main class="game-container">
 
-    <h1>Memory card Game</h1>
+        <!-- Game Header -->
+        <header class="game-header">
+            <p class="subtitle">A LITTLE GAME TO BRIGHTEN YOUR DAY</p>
 
-    <p class=" instruction" >
-   Find all the matching pairs  ♡
-</p>
-</header>
+            <h1>Memory Card Game</h1>
 
+            <p class="instructions">
+                Find all the matching pairs ♡
+            </p>
+        </header>
 
-<!-- Game Statistics -->
+        <!-- Game Statistics -->
+        <section class="game-stats">
 
-<section class="game-stats">
+            <div class="stat">
+                <span class="stat-label">Time</span>
+                <span id="timer">00:00</span>
+            </div>
 
-    <div class = 'stat' > 
-        <span class="stat-lebel">Time</span>
-         <span id="time">00:00</span>
-    </div>
+            <div class="stat">
+                <span class="stat-label">Moves</span>
+                <span id="moves">0</span>
+            </div>
 
-<div class="stat">
-      <span class="stat-label">moves</span>
-      <span id="moves">0</span>
-</div>
+            <div class="stat">
+                <span class="stat-label">Pairs</span>
+                <span id="pairs">0 / 8</span>
+            </div>
 
+        </section>
 
-<div class="stat">
-    <span class="stat-label">Pairs</span>
-    <span id="pairs" >0 / 8</span>
+        <!-- Memory Cards -->
+        <section
+            id="game-board"
+            class="game-board"
+            aria-label="Memory card game board"
+        >
+            <!-- JavaScript will create the cards here -->
+        </section>
 
-</div>
+        <!-- Game Message -->
+        <p id="message" class="message" aria-live="polite">
+            Ready to play? ♡
+        </p>
 
-</section>
-
-   <!-- Memory Cards -->
-
-<section
-id="game-board"
-class="game-board"
-aria-label="memory card game board" ></section>
-
-       <!-- Game Message -->
-
-       <p id="message" class="message" aria-live="polite">
-        Ready to play? ♡
-       </p>
-     <!-- Restart Button -->
-
-      <button id="restart-button" class="restart-button" type="button">
+        <!-- Restart Button -->
+        <button id="restart-button" class="restart-button" type="button">
             ♡ Restart Game ♡
         </button>
 
-</main>
- 
+    </main>
+
 </body>
 </html>
