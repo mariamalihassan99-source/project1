@@ -2,105 +2,113 @@ const restartButtonElement = document.querySelector('#restart-button');
 const PairCountElement = document.querySelector('#pairs');
 const movesElement = document.querySelector('#moves');
 const gameboardElement = document.querySelector('#game-board');
+const timeElement = document.querySelector('#timer')
+const cardboardElement = document.querySelectorAll('.board-card')
+
+// console.log(restartButtonElement)
+// console.log(PairCountElement)
+// console.log(movesElement)
+// console.log(gameboardElement)
+// console.log(timeElement)
+console.log(cardboardElement)
+
+// 1. cache all the board-card with querySelectorAll()
+// 2. Loop through all the cards and add event listener to each eleemnt
+// 3. the event listener should call the chooseCard function()
 
 const emojis = [
+    "🩷", "🧸", "🍁",
+    "🫖", "🍰", "💌",
     "🩷", "🧸", "🍁",
     "🫖", "🍰", "💌"
 ];
 //vriables to stroe the cards
-let fristcard = null;
+let firstcard = null;
 let secondcard = null;
 let moves = 0;
 let pairs = 0;
+let time = 60;
 
-function createCards() {
-    // // zero for the first element in the groub (clearing the board) 
-    gameboardElement.innerHTML = "";
+function startTimer (){
+}
 
 
-    //to create emojis pairs 
-    let allEmojis = emojis.concat(emojis);
+function startGame(){
+    shuffleCards()
+}
 
-    // reorgnize the card randomly 
-    allEmojis.sort(function () {
-        return Math.random() - 0.5;
-    });
-   // create each of the cards 
-    for (let i = 0; i < allEmojis.length; i++) {
-         //creating the button 
-        let card = document.createElement("button");
+function handleClick(event){
+    chooseCard(event)
+}
 
-        card.className = "board-card";
-        card.textContent = "?";  // shows the ? on the cards 
-
-        card.dataset.emoji = allEmojis[i];  //store the emojis inside the cards
-
-        //adding the event listesner to the cards 
-        card.addEventListener("click", function () {
-
-            if (card.textContent !== "?") {
-                return;
-            }
-             //shows the emojis on the cards 
-            card.textContent = card.dataset.emoji;
-            //choosing the first card if is selected or no 
-            if (fristcard === null) {
-
-                fristcard = card;
-              
-            } else {
-
-                secondcard = card;
-                //counting the moves 
-                moves++;
-                //updating the count on the screen
-                movesElement.textContent = moves;
-                //checking the pairs 
-                if (fristcard.dataset.emoji === secondcard.dataset.emoji) {
-                   //counting and updaiting the pairs
-                    pairs++;
-                    PairCountElement.textContent = pairs + " / 6";
-
-                    fristcard = null;
-                    secondcard = null;
-
-                    if (pairs === 6) {
-                        alert("🎉 You Win!");
-                    }
-
-                } else {
-
-                    setTimeout(function () {
-                      //hide the cards if not matching or not winning
-                        fristcard.textContent = "?";
-                        secondcard.textContent = "?";
-
-                        fristcard = null;
-                        secondcard = null;
-                    //waiting 1000 millisecond
-                    }, 1000);
-                }
-            }
-        });
-        // for showing the  cards 
-        gameboardElement.appendChild(card);
+function chooseCard(event){
+    const cardIndex = Number(event.target.id.split('card-')[1])
+    console.log(cardIndex)
+    console.log('Picked card')
+    if(!firstcard && !secondcard){
+        firstcard = emojis[cardIndex]
+        event.target.textContent = emojis[cardIndex]
+        
     }
+
+  else if( firstcard && !secondcard ) {
+//    1. do the same as firstCard reveal
+//    2. write if statement to check if firstCard is same as secondCard
+//    3. if they are pairs++
+
+    secondcard= emojis[cardIndex]
+    event.target.textContent = emojis[cardIndex]
+    moves++;
+        movesElement.textContent = moves;
+  }
+
+
+else if (firstcard === secondcard) {
+    console.log("it's a match");
+    pairs++;
+ PairCountElement.textContent = `${pairs} / 6`;
+ 
+
+}
+   
+ else  {
+    console.log('not a match ')
+    firstcard = null;
+        secondcard = null;
+    
+    }
+
+
+ 
+    }  
+ 
+
+
+
+function shuffleCards(){
+    emojis.sort((a,b)=> .5 - Math.random())
+    console.log(emojis)
 }
 
 function restartGame() {
 
     moves = 0;
     pairs = 0;
+  
 
-    fristcard = null;
+    firstcard = null;
     secondcard = null;
 
     movesElement.textContent = 0;
     PairCountElement.textContent = "0 / 6";
- /// creating new cards 
-    createCards();
-}
+
+ }
 
 restartButtonElement.addEventListener("click", restartGame);
 
-createCards();
+cardboardElement.forEach((card) => {
+  card.addEventListener('click', handleClick);
+});
+
+
+startGame()
