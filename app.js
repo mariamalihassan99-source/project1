@@ -48,8 +48,8 @@ function startTimer() {
 
         clearInterval(timerInterval);
 
-        messageElement.textContent = "⏰ Time's Up" + playerName + "!";
-
+        messageElement.textContent = "⏰ Time's Up" +''+ playerName + "!";
+     
     }
 
 }, 1000);
@@ -128,7 +128,7 @@ function chooseCard(event) {
 
             if (pairs === 6) {
                 messageElement.textContent =
-                    `🎉 Congratulations!" + ${playerName}! You found all pairs!`;
+                    `🎉 Congratulations!" ${playerName}! You found all pairs!`;
             }
 
 

@@ -10,7 +10,7 @@
 
 body {
     min-height: 100vh;
-    background-color: #fdf5f8;
+    background-image: url("image.png");
     font-family: Arial, sans-serif;
     color: #555;
     padding: 20px;
@@ -80,7 +80,7 @@ body {
 .player-name label {
     display: block;
     margin-bottom: 8px;
-    color: #b85c7b;
+    color:   #b86f94;
     font-weight: bold;
 }
 
@@ -173,6 +173,9 @@ body {
 .restart-button:hover {
     background-color: #d74895;
 }
+
+
+
 
 /* 
    MOBILE
