@@ -4,7 +4,7 @@ const movesElement = document.querySelector('#moves');
 const gameboardElement = document.querySelector('#game-board');
 const timeElement = document.querySelector('#timer')
 const cardboardElement = document.querySelectorAll('.board-card')
-
+const messageElement = document.querySelector('#message');
 // console.log(restartButtonElement)
 // console.log(PairCountElement)
 // console.log(movesElement)
@@ -25,6 +25,8 @@ const emojis = [
 //vriables to stroe the cards
 let firstcard = null;
 let secondcard = null;
+let firstcardElement = null;
+let secondcardElement = null;
 let moves = 0;
 let pairs = 0;
 let time = 60;
@@ -42,11 +44,21 @@ function handleClick(event){
 }
 
 function chooseCard(event){
-    const cardIndex = Number(event.target.id.split('card-')[1])
-    console.log(cardIndex)
+    const cardIndex = Number(event.target.id.split('card-')[1]) -1
+
+
+    // to not allow choosing the same card twice 
+    if (event.target.textContent !== '?') {
+        return
+    }
+    
+    console.log(emojis[cardIndex])
     console.log('Picked card')
+
+    // if not first and not the second 
     if(!firstcard && !secondcard){
         firstcard = emojis[cardIndex]
+        firstcardElement = event.target
         event.target.textContent = emojis[cardIndex]
         
     }
@@ -57,33 +69,50 @@ function chooseCard(event){
 //    3. if they are pairs++
 
     secondcard= emojis[cardIndex]
+    secondcardElement = event.target;
     event.target.textContent = emojis[cardIndex]
     moves++;
         movesElement.textContent = moves;
-  }
+  
 
 
-else if (firstcard === secondcard) {
-    console.log("it's a match");
+ if (firstcard === secondcard) {
+
+    console.log('its a match');
+
     pairs++;
- PairCountElement.textContent = `${pairs} / 6`;
- 
+    PairCountElement.textContent = pairs + " / 6";
 
-}
-   
- else  {
-    console.log('not a match ')
-    firstcard = null;
-        secondcard = null;
-    
+
+
+    if (pairs === 6) {
+        messageElement.textContent =
+            "🎉 Congratulations! You found all pairs!";
     }
 
 
- 
-    }  
- 
+   
+ else  {
+    console.log('not a match ')
+    
+    setTimeout(() => {
 
+            firstcardElement.textContent = '?';
+            secondcardElement.textContent = '?';
 
+            firstcard = null;
+            secondcard = null;
+
+            firstcardElement = null
+            secondcardElement = null
+        }, 1000);
+    }
+
+ 
+}   
+}
+
+}
 
 function shuffleCards(){
     emojis.sort((a,b)=> .5 - Math.random())
@@ -98,7 +127,10 @@ function restartGame() {
 
     firstcard = null;
     secondcard = null;
+    messageElement.textContent = "ready to play ";
 
+
+    
     movesElement.textContent = 0;
     PairCountElement.textContent = "0 / 6";
 
