@@ -31,91 +31,98 @@ let moves = 0;
 let pairs = 0;
 let time = 60;
 
-function startTimer (){
+function startTimer() {
+
 }
 
 
-function startGame(){
+function startGame() {
     shuffleCards()
 }
 
-function handleClick(event){
+function handleClick(event) {
     chooseCard(event)
 }
 
-function chooseCard(event){
-    const cardIndex = Number(event.target.id.split('card-')[1]) -1
+function chooseCard(event) {
+    const cardIndex = Number(event.target.id.split('card-')[1]) - 1
 
 
     // to not allow choosing the same card twice 
     if (event.target.textContent !== '?') {
         return
     }
-    
+
     console.log(emojis[cardIndex])
     console.log('Picked card')
 
     // if not first and not the second 
-    if(!firstcard && !secondcard){
+    if (!firstcard && !secondcard) {
         firstcard = emojis[cardIndex]
         firstcardElement = event.target
         event.target.textContent = emojis[cardIndex]
-        
+
     }
 
-  else if( firstcard && !secondcard ) {
-//    1. do the same as firstCard reveal
-//    2. write if statement to check if firstCard is same as secondCard
-//    3. if they are pairs++
+    else if (firstcard && !secondcard) {
+        //    1. do the same as firstCard reveal
+        //    2. write if statement to check if firstCard is same as secondCard
+        //    3. if they are pairs++
 
-    secondcard= emojis[cardIndex]
-    secondcardElement = event.target;
-    event.target.textContent = emojis[cardIndex]
-    moves++;
+        secondcard = emojis[cardIndex]
+        secondcardElement = event.target;
+        event.target.textContent = emojis[cardIndex]
+        moves++;
         movesElement.textContent = moves;
-  
-
-
- if (firstcard === secondcard) {
-
-    console.log('its a match');
-
-    pairs++;
-    PairCountElement.textContent = pairs + " / 6";
 
 
 
-    if (pairs === 6) {
-        messageElement.textContent =
-            "🎉 Congratulations! You found all pairs!";
+        if (firstcard === secondcard) { // if statement if the matches are correct
+
+            console.log('its a match');
+
+            pairs++;
+            PairCountElement.textContent = pairs + " / 6";
+
+
+                    firstcard = null;
+                    secondcard = null;
+
+                    firstcardElement = null
+                    secondcardElement = null
+
+            if (pairs === 6) {
+                messageElement.textContent =
+                    "🎉 Congratulations! You found all pairs!";
+            }
+
+
+
+           
+
+        }
+         else { // else if the matches 
+                console.log('not a match ')
+
+                setTimeout(() => {
+
+                    firstcardElement.textContent = '?';
+                    secondcardElement.textContent = '?';
+
+                    firstcard = null;
+                    secondcard = null;
+
+                    firstcardElement = null
+                    secondcardElement = null
+                }, 1000);
+            }
+
     }
 
-
-   
- else  {
-    console.log('not a match ')
-    
-    setTimeout(() => {
-
-            firstcardElement.textContent = '?';
-            secondcardElement.textContent = '?';
-
-            firstcard = null;
-            secondcard = null;
-
-            firstcardElement = null
-            secondcardElement = null
-        }, 1000);
-    }
-
- 
-}   
 }
 
-}
-
-function shuffleCards(){
-    emojis.sort((a,b)=> .5 - Math.random())
+function shuffleCards() {
+    emojis.sort((a, b) => .5 - Math.random())
     console.log(emojis)
 }
 
@@ -123,23 +130,23 @@ function restartGame() {
 
     moves = 0;
     pairs = 0;
-  
+
 
     firstcard = null;
     secondcard = null;
     messageElement.textContent = "ready to play ";
 
 
-    
+
     movesElement.textContent = 0;
     PairCountElement.textContent = "0 / 6";
 
- }
+}
 
 restartButtonElement.addEventListener("click", restartGame);
 
 cardboardElement.forEach((card) => {
-  card.addEventListener('click', handleClick);
+    card.addEventListener('click', handleClick);
 });
 
 
