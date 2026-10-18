@@ -6,6 +6,7 @@ const gameboardElement = document.querySelector('#game-board');
 const timeElement = document.querySelector('#timer')
 const cardboardElement = document.querySelectorAll('.board-card')
 const messageElement = document.querySelector('#message');
+const playerNameElement = document.querySelector('#player-name');
 // console.log(restartButtonElement)
 // console.log(PairCountElement)
 // console.log(movesElement)
@@ -29,25 +30,46 @@ let secondcard = null;
 let firstcardElement = null;
 let secondcardElement = null;
 let timerInterval
+let playerName = '' ;
 let moves = 0;
 let pairs = 0;
 let time = 60;
 
 function startTimer() {
 
-    timerInterval = setInterval( ()=> {
-        time--
-        console.log(time)
-        timeElement.textContent = `00:${time}`
-    }, 1000)
+  timerInterval = setInterval(() => {
+
+    time--;
+    console.log(time);
+
+    timeElement.textContent = `00:${time}`;
+ //to stop when the time is finished 
+    if (time === 0) {
+
+        clearInterval(timerInterval);
+
+        messageElement.textContent = "⏰ Time's Up" + playerName + "!";
+
+    }
+
+}, 1000);
 
 }
 
 
 function startGame() {
+ playerName = playerNameElement.value 
+
+    if (playerName === '') {
+        playerName = 'Player';
+    }
+
+  
+ messageElement.textContent = `Good Luck ${playerName} ❤️`;
     cardboardElement.forEach((card) => {
     card.addEventListener('click', handleClick);
 });
+
 
     shuffleCards()
     startTimer()
@@ -106,7 +128,7 @@ function chooseCard(event) {
 
             if (pairs === 6) {
                 messageElement.textContent =
-                    "🎉 Congratulations! You found all pairs!";
+                    `🎉 Congratulations!" + ${playerName}! You found all pairs!`;
             }
 
 

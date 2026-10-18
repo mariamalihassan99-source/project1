@@ -72,6 +72,33 @@ body {
     font-weight: bold;
 }
 
+.player-name {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.player-name label {
+    display: block;
+    margin-bottom: 8px;
+    color: #b85c7b;
+    font-weight: bold;
+}
+
+.player-name input {
+    width: 250px;
+    padding: 12px;
+    border: 2px solid #f5b6c8;
+    border-radius: 12px;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    background-color: #fffafc;
+}
+
+.player-name input:focus {
+    border-color: #ff8fb1;
+    box-shadow: 0 0 8px rgba(255, 143, 177, 0.4);
+}
 
 
 .board {
