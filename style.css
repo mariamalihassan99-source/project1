@@ -7,9 +7,6 @@
     box-sizing: border-box;
 }
 
-/* ==========================
-   BODY
-========================== */
 
 body {
     min-height: 100vh;
@@ -19,19 +16,12 @@ body {
     padding: 20px;
 }
 
-/* ==========================
-   CONTAINER
-========================== */
-
 .game-container {
     max-width: 900px;
     margin: auto;
     text-align: center;
 }
 
-/* ==========================
-   HEADER
-========================== */
 
 .game-header {
     margin-bottom: 30px;
@@ -51,9 +41,6 @@ body {
     color: #666;
 }
 
-/* ==========================
-   STATS
-========================== */
 
 .game-stats {
     display: flex;
@@ -85,9 +72,7 @@ body {
     font-weight: bold;
 }
 
-/* ==========================
-   BOARD
-========================== */
+
 
 .board {
     display: grid;
@@ -97,9 +82,7 @@ body {
     margin: 30px auto;
 }
 
-/* ==========================
-   CARDS
-========================== */
+
 
 .board-card {
     width: 90px;
@@ -125,17 +108,27 @@ body {
     transform: scale(1.05);
 }
 
-/* 
-   MESSAGe */
+
 
 .message {
     margin: 20px 0;
     color: #b86f94;
 }
 
-/* 
-   BUTTON
- */
+.start-button {
+    background-color: #e45aa5;
+    color: white;
+
+    border: none;
+    border-radius: 25px;
+
+    padding: 12px 25px;
+
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+
 
 .restart-button {
     background-color: #e45aa5;

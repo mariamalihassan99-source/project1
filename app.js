@@ -1,4 +1,5 @@
 const restartButtonElement = document.querySelector('#restart-button');
+const startButtonElement = document.querySelector('#start-button');
 const PairCountElement = document.querySelector('#pairs');
 const movesElement = document.querySelector('#moves');
 const gameboardElement = document.querySelector('#game-board');
@@ -32,12 +33,13 @@ let pairs = 0;
 let time = 60;
 
 function startTimer() {
-
+    timeElement.time = 60 
 }
 
 
 function startGame() {
     shuffleCards()
+    startTimer()
 }
 
 function handleClick(event) {
@@ -49,7 +51,7 @@ function chooseCard(event) {
 
 
     // to not allow choosing the same card twice 
-    if (event.target.textContent !== '?') {
+    if (event.target.textContent !== '♡') {
         return
     }
 
@@ -101,13 +103,13 @@ function chooseCard(event) {
            
 
         }
-         else { // else if the matches 
+         else { // else if there is no  matches 
                 console.log('not a match ')
 
                 setTimeout(() => {
 
-                    firstcardElement.textContent = '?';
-                    secondcardElement.textContent = '?';
+                    firstcardElement.textContent = '♡';
+                    secondcardElement.textContent = '♡';
 
                     firstcard = null;
                     secondcard = null;
@@ -134,16 +136,19 @@ function restartGame() {
 
     firstcard = null;
     secondcard = null;
-    messageElement.textContent = "ready to play ";
-
-
-
+    
+    
+    messageElement.textContent = " Ready to play? ♡";
     movesElement.textContent = 0;
     PairCountElement.textContent = "0 / 6";
-
+    
+    
 }
 
+
+
 restartButtonElement.addEventListener("click", restartGame);
+startButtonElement.addEventListener("click", startGame);
 
 cardboardElement.forEach((card) => {
     card.addEventListener('click', handleClick);
