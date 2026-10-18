@@ -7,6 +7,7 @@ const timeElement = document.querySelector('#timer')
 const cardboardElement = document.querySelectorAll('.board-card')
 const messageElement = document.querySelector('#message');
 const playerNameElement = document.querySelector('#player-name');
+const highScoreElement = document.querySelector('#high-score');
 // console.log(restartButtonElement)
 // console.log(PairCountElement)
 // console.log(movesElement)
@@ -19,10 +20,10 @@ console.log(cardboardElement)
 // 3. the event listener should call the chooseCard function()
 
 const emojis = [
-    "🩷", "🧸", "🍁",
-    "🫖", "🍰", "💌",
-    "🩷", "🧸", "🍁",
-    "🫖", "🍰", "💌"
+    "🌻", "🧸", "🧁",
+    "🕯️", "🍰", "💌",
+    "🌻", "🧸", "🧁",
+    "🕯️", "🍰", "💌"
 ];
 //vriables to stroe the cards
 let firstcard = null;
@@ -30,6 +31,7 @@ let secondcard = null;
 let firstcardElement = null;
 let secondcardElement = null;
 let timerInterval
+let highscore=0;
 let playerName = '' ;
 let moves = 0;
 let pairs = 0;
@@ -48,7 +50,7 @@ function startTimer() {
 
         clearInterval(timerInterval);
 
-        messageElement.textContent = "⏰ Time's Up" +''+ playerName + "!";
+        messageElement.textContent = "⏰ Time's Up" +" "+ playerName + "!";
      
     }
 
@@ -65,7 +67,7 @@ function startGame() {
     }
 
   
- messageElement.textContent = `Good Luck ${playerName} ❤️`;
+ messageElement.textContent = `Good Luck ${playerName} ✿`;
     cardboardElement.forEach((card) => {
     card.addEventListener('click', handleClick);
 });
@@ -84,7 +86,7 @@ function chooseCard(event) {
 
 
     // to not allow choosing the same card twice 
-    if (event.target.textContent !== '♡') {
+    if (event.target.textContent !== '🌸') {
         return
     }
 
@@ -127,8 +129,19 @@ function chooseCard(event) {
             secondcardElement = null
 
             if (pairs === 6) {
-                messageElement.textContent =
-                    `🎉 Congratulations!" ${playerName}! You found all pairs!`;
+                if (pairs === 6) {
+
+    messageElement.textContent =
+        `🎉 Congratulations ${playerName} You found all pairs!`;
+
+    if (highscore === 0 || moves< highscore) {
+
+        highscore = moves;
+        highScoreElement.textContent = highscore;
+
+    }
+}
+
             }
 
 
@@ -141,8 +154,8 @@ function chooseCard(event) {
 
             setTimeout(() => {
 
-                firstcardElement.textContent = '♡';
-                secondcardElement.textContent = '♡';
+                firstcardElement.textContent = '🌸';
+                secondcardElement.textContent = '🌸';
 
                 firstcard = null;
                 secondcard = null;
@@ -183,7 +196,7 @@ function restartGame() {
 
 function resetCards(){
     for(let card of cardboardElement){
-        card.textContent = '♡'
+        card.textContent = '🌸'
     }
 }
 
