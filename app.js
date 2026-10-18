@@ -28,16 +28,27 @@ let firstcard = null;
 let secondcard = null;
 let firstcardElement = null;
 let secondcardElement = null;
+let timerInterval
 let moves = 0;
 let pairs = 0;
 let time = 60;
 
 function startTimer() {
-    timeElement.time = 60 
+
+    timerInterval = setInterval( ()=> {
+        time--
+        console.log(time)
+        timeElement.textContent = `00:${time}`
+    }, 1000)
+
 }
 
 
 function startGame() {
+    cardboardElement.forEach((card) => {
+    card.addEventListener('click', handleClick);
+});
+
     shuffleCards()
     startTimer()
 }
@@ -87,11 +98,11 @@ function chooseCard(event) {
             PairCountElement.textContent = pairs + " / 6";
 
 
-                    firstcard = null;
-                    secondcard = null;
+            firstcard = null;
+            secondcard = null;
 
-                    firstcardElement = null
-                    secondcardElement = null
+            firstcardElement = null
+            secondcardElement = null
 
             if (pairs === 6) {
                 messageElement.textContent =
@@ -100,24 +111,24 @@ function chooseCard(event) {
 
 
 
-           
+
 
         }
-         else { // else if there is no  matches 
-                console.log('not a match ')
+        else { // else if there is no  matches 
+            console.log('not a match ')
 
-                setTimeout(() => {
+            setTimeout(() => {
 
-                    firstcardElement.textContent = '♡';
-                    secondcardElement.textContent = '♡';
+                firstcardElement.textContent = '♡';
+                secondcardElement.textContent = '♡';
 
-                    firstcard = null;
-                    secondcard = null;
+                firstcard = null;
+                secondcard = null;
 
-                    firstcardElement = null
-                    secondcardElement = null
-                }, 1000);
-            }
+                firstcardElement = null
+                secondcardElement = null
+            }, 1000);
+        }
 
     }
 
@@ -136,23 +147,27 @@ function restartGame() {
 
     firstcard = null;
     secondcard = null;
-    
-    
+
+    clearInterval(timerInterval);
+    time = 60
+
     messageElement.textContent = " Ready to play? ♡";
     movesElement.textContent = 0;
     PairCountElement.textContent = "0 / 6";
-    
-    
+    startTimer();
+    resetCards()
+
 }
 
+function resetCards(){
+    for(let card of cardboardElement){
+        card.textContent = '♡'
+    }
+}
 
 
 restartButtonElement.addEventListener("click", restartGame);
 startButtonElement.addEventListener("click", startGame);
 
-cardboardElement.forEach((card) => {
-    card.addEventListener('click', handleClick);
-});
 
 
-startGame()
