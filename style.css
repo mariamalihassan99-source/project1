@@ -199,7 +199,28 @@ to {
     background-color: #FAC6CF;
 }
 
+#pause-button {
+    background-color: #E392A1;
+    color: white;
 
+    border: none;
+    border-radius: 25px;
+
+    padding: 12px 25px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#pause-button:hover {
+    background-color: #FAC6CF;
+    transform: scale(1.05);
+}
+
+#pause-button:active {
+    transform: scale(0.95);
+}
 
 
 /* 

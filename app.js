@@ -8,6 +8,7 @@ const cardboardElement = document.querySelectorAll('.board-card')
 const messageElement = document.querySelector('#message');
 const playerNameElement = document.querySelector('#player-name');
 const highScoreElement = document.querySelector('#high-score');
+const pauseButtonElement = document.querySelector('#pause-button');
 // console.log(restartButtonElement)
 // console.log(PairCountElement)
 // console.log(movesElement)
@@ -33,6 +34,7 @@ let secondcardElement = null;
 let timerInterval
 let highscore=0;
 let playerName = '' ;
+let isPaused = false ;
 let moves = 0;
 let pairs = 0;
 let time = 60;
@@ -82,6 +84,10 @@ function handleClick(event) {
 }
 
 function chooseCard(event) {
+    //so we canot reveal cards we it pause 
+if (isPaused) {
+    return;
+}
     const cardIndex = Number(event.target.id.split('card-')[1]) - 1
 
 
@@ -201,8 +207,21 @@ function resetCards(){
 }
 
 
+function pauseGame (){
+    if (!isPaused){
+        clearInterval(timerInterval);
+        pauseButtonElement.textContent = "Resume";
+        isPaused = true
+    }
+    else{
+        startTimer();
+        pauseButtonElement.textContent = "pause";
+        isPaused = false
+    }
+}
+
 restartButtonElement.addEventListener("click", restartGame);
 startButtonElement.addEventListener("click", startGame);
-
+pauseButtonElement.addEventListener("click", pauseGame);
 
 
