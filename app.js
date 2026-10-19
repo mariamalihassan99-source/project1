@@ -9,6 +9,7 @@ const messageElement = document.querySelector('#message');
 const playerNameElement = document.querySelector('#player-name');
 const highScoreElement = document.querySelector('#high-score');
 const pauseButtonElement = document.querySelector('#pause-button');
+
 // console.log(restartButtonElement)
 // console.log(PairCountElement)
 // console.log(movesElement)
@@ -84,6 +85,7 @@ function handleClick(event) {
 }
 
 function chooseCard(event) {
+   
     //so we canot reveal cards we it pause 
 if (isPaused) {
     return;
