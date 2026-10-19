@@ -226,6 +226,9 @@ restartButtonElement.addEventListener("click", restartGame);
 startButtonElement.addEventListener("click", startGame);
 pauseButtonElement.addEventListener("click", pauseGame);
 
+
+
+//dark mode click 
 darkModeButton.addEventListener('click', () => {
 
     document.body.classList.toggle('dark-mode');
