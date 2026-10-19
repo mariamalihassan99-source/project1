@@ -9,7 +9,7 @@ const messageElement = document.querySelector('#message');
 const playerNameElement = document.querySelector('#player-name');
 const highScoreElement = document.querySelector('#high-score');
 const pauseButtonElement = document.querySelector('#pause-button');
-
+const darkModeButton = document.querySelector('#dark-mode-button');
 // console.log(restartButtonElement)
 // console.log(PairCountElement)
 // console.log(movesElement)
@@ -226,4 +226,11 @@ restartButtonElement.addEventListener("click", restartGame);
 startButtonElement.addEventListener("click", startGame);
 pauseButtonElement.addEventListener("click", pauseGame);
 
+darkModeButton.addEventListener('click', () => {
 
+    document.body.classList.toggle('dark-mode');
+
+});
+
+
+document.body.classList.toggle('dark-mode');
