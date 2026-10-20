@@ -141,7 +141,7 @@ if (isPaused) {
             firstcardElement = null
             secondcardElement = null
 
-            if (pairs === 6) {
+     if (pairs === 6) {
                 if (pairs === 6) {
 
     messageElement.textContent =
@@ -234,7 +234,7 @@ pauseButtonElement.addEventListener("click", pauseGame);
 
 
 
-//dark mode click 
+//dark mode click toggle switching between two states like switch on/ of 
 darkModeButton.addEventListener('click', () => {
 
     document.body.classList.toggle('dark-mode');
@@ -242,4 +242,3 @@ darkModeButton.addEventListener('click', () => {
 });
 
 
-document.body.classList.toggle('dark-mode');
