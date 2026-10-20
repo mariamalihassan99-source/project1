@@ -34,8 +34,10 @@ memory card game is a simple and interactive game where playes filp cards to the
 
 ## screenshots 
 ![alt text](image-1.png)
-
-
+![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
+![alt text](image-5.png)
 
 ## Future Enhancements
 1. animation background

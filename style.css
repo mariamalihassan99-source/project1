@@ -289,7 +289,56 @@ to {
 /* 
    MOBILE
  */
+/* iPhone & Mobile */
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
 
+    .game-container {
+        padding: 15px;
+    }
+
+    .game-stats {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .stat {
+        width: 120px;
+    }
+
+    .board {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .board-card {
+        width: 90px;
+        height: 90px;
+        font-size: 30px;
+    }
+
+    .buttons-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #start-button,
+    #restart-button,
+    #pause-button,
+    #dark-mode-button {
+        width: 220px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .message {
+        font-size: 18px;
+        text-align: center;
+    }
 }
