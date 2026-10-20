@@ -341,4 +341,9 @@ to {
         font-size: 18px;
         text-align: center;
     }
+ 
+    body {
+        background-size: cover;
+        background-position: center;
+    }
 }
