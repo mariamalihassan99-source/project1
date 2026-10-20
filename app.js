@@ -48,13 +48,16 @@ let time = 60;
 function startTimer() {
 
   timerInterval = setInterval(() => {
+     if (isPaused) {
+            return;
+        }
 
     time--;
     console.log(time);
 
     timeElement.textContent = `00:${time}`;
  //to stop when the time is finished 
-    if (time === 0) {
+    if (time <= 0) {
 
         clearInterval(timerInterval);
 
@@ -141,13 +144,16 @@ if (isPaused) {
             firstcardElement = null
             secondcardElement = null
 
+     
      if (pairs === 6) {
-                if (pairs === 6) {
 
     messageElement.textContent =
         `🎉 Congratulations ${playerName} You found all pairs!`;
-        clearInterval(timerInterval)
 
+        clearInterval(timerInterval) //stop the timer after finding all the matches
+
+
+        //highest score 
     if (highscore === 0 || moves< highscore) {
 
         highscore = moves;
@@ -156,13 +162,7 @@ if (isPaused) {
     }
 }
 
-            }
-
-
-
-
-
-        }
+}
         else { // else if there is no  matches 
             console.log('not a match ')
 
@@ -189,23 +189,26 @@ function shuffleCards() {
 }
 
 function restartGame() {
-
+clearInterval(timerInterval);
     moves = 0;
     pairs = 0;
-
+    time = 60
 
     firstcard = null;
     secondcard = null;
+    firstcardElement = null;
+    secondcardElement = null;
 
-    clearInterval(timerInterval);
-    time = 60
-
+    isPaused = false;
+    
     messageElement.textContent = " Ready to play? ♡";
     movesElement.textContent = 0;
     PairCountElement.textContent = "0 / 6";
-    startTimer();
-    resetCards()
+    timeElement.textContent = '00:60';
+    pauseButtonElement.textContent = 'Pause';
 
+   shuffleCards();
+   resetCards();
 }
 
 function resetCards(){
