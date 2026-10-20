@@ -9,7 +9,7 @@
 
 
 ## overview
-memory card game is a simple and interactive game where playes filp cards to the matching pairs . the game designed with a cute pink theme and helps players improve their memory and concentration .
+memory card game is a simple and interactive game where players filp cards to finding the matching pairs . the game designed with a cute pink theme and helps players improve their memory and concentration .
 
 
 
