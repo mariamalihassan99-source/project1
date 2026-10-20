@@ -40,6 +40,11 @@ let moves = 0;
 let pairs = 0;
 let time = 60;
 
+
+//functions 
+
+
+//timer function 
 function startTimer() {
 
   timerInterval = setInterval(() => {
@@ -141,6 +146,7 @@ if (isPaused) {
 
     messageElement.textContent =
         `🎉 Congratulations ${playerName} You found all pairs!`;
+        clearInterval(timerInterval)
 
     if (highscore === 0 || moves< highscore) {
 

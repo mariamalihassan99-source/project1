@@ -157,15 +157,14 @@ to {
     transform: scale(1.05);
 }
 
-
-
-.message {
-    margin: 20px 0;
-    color:  #E392A1;
-    text-align: center;
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
 }
-
-.start-button {
+#start-button {
     background-color: #E392A1;
     color: white;
 
@@ -178,12 +177,12 @@ to {
     font-size: 1rem;
 }
 
-.start-button:hover {
+#start-button:hover {
     background-color: #FAC6CF;
 }
 
 
-.restart-button {
+#restart-button {
     background-color: #E392A1;
     color: white;
 
@@ -196,7 +195,7 @@ to {
     font-size: 1rem;
 }
 
-.restart-button:hover {
+#restart-button:hover {
     background-color: #FAC6CF;
 }
 
@@ -209,7 +208,7 @@ to {
 
     padding: 10px 20px;
     cursor: pointer;
-
+ align-items: center;
     transition: 0.3s;
 }
 
@@ -241,6 +240,15 @@ to {
 }
 
 
+
+
+.message {
+    margin: 20px 0;
+    color:  #E392A1;
+    text-align: center;
+}
+
+
 .dark-mode {
     background-color: #222;
     color: white;
@@ -257,22 +265,26 @@ to {
     background-color: #3a3a3a;
     color: white;
 }
-.dark-mode button {
+.dark-mode #dark-mode-button {
     background-color: #341e24;
-    color: white;
-   
-    
+    color: white;   
 
 }
 .dark-mode #pause-button{
+      background-color: #341e24;
+    color: white;   
+}
+.dark-mode #restart-button{
     background-color: #341e24;
-    color: white;
+    color: white;  
+}
+.dark-mode #start-button{
+   background-color: #341e24;
+    color: white;  
 }
 
-.dark-mode #dark-mode-button{
-background-color: #341e24;
-    color: white;
-}
+
+
 
 /* 
    MOBILE
